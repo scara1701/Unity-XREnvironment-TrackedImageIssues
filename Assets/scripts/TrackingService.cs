@@ -8,6 +8,10 @@ using UnityEngine.XR.ARFoundation;
 
 public class TrackingService : MonoBehaviour
 {
+
+    [SerializeField]
+    GameObject MyPrefab;
+
     [SerializeField]
     ARTrackedImageManager m_TrackedImageManager;
 
@@ -18,6 +22,7 @@ public class TrackingService : MonoBehaviour
         foreach (var newImage in eventArgs.added)
         {
             // Handle added event
+            Instantiate(MyPrefab, newImage.transform);
         }
 
         foreach (var updatedImage in eventArgs.updated)
